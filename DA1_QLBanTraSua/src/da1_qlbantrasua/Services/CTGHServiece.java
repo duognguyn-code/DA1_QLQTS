@@ -11,7 +11,7 @@ import java.util.ArrayList;
  *
  * @author Admin
  */
-public interface NhanVienService {
+public interface CTGHServiece {
     public ArrayList<CTGioHang> getListCTGioHang(String maHoaDon);
     public ArrayList<CTGioHang> hoaDonAo();
     public String themCTGH(CTGioHang cTGioHang);
