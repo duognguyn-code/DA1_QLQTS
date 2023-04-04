@@ -4,6 +4,8 @@
  */
 package da1_qlbantrasua.Views;
 
+import java.awt.FlowLayout;
+
 /**
  *
  * @author Admin
@@ -149,6 +151,11 @@ public class MainFormView extends javax.swing.JFrame {
         jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/da1_qlbantrasua/Views/icon/management.png"))); // NOI18N
 
         jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/da1_qlbantrasua/Views/icon/thongke2.png"))); // NOI18N
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
 
         jButton7.setBackground(new java.awt.Color(102, 204, 255));
         jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/da1_qlbantrasua/Views/icon/milktea2.png"))); // NOI18N
@@ -451,24 +458,19 @@ public class MainFormView extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton16ActionPerformed
 
     private void jButton17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton17ActionPerformed
-//        QuanLyDoanhSoDemo quanLyDoanhSo = new QuanLyDoanhSoDemo();
-//        jPanelRun.removeAll();
-//        jPanelRun.add(quanLyDoanhSo);
-//        jPanelRun.setLayout(new FlowLayout());
-//        this.pack();
-//        jPanelRun.setVisible(true);
+        
     }//GEN-LAST:event_jButton17ActionPerformed
 
     private void btnBanHangMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBanHangMenuActionPerformed
-//        MainBanHangView banHang = new MainBanHangView();
+        MainBanHangView banHang = new MainBanHangView();
 //        NhanVien nhanVienBH = nhanVienDangNhapThanhCong;
-//        jPanelRun.removeAll();
+        jPanelRun.removeAll();
 //        banHang.editData(nhanVienBH);
 //        System.out.println(nhanVienBH.getId());
-//        jPanelRun.add(banHang);
-//        jPanelRun.setLayout(new FlowLayout());
-//        this.pack();
-//        jPanelRun.setVisible(true);
+        jPanelRun.add(banHang);
+        jPanelRun.setLayout(new FlowLayout());
+        this.pack();
+        jPanelRun.setVisible(true);
     }//GEN-LAST:event_btnBanHangMenuActionPerformed
 
     private void btnSanPhamMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSanPhamMenuActionPerformed
@@ -515,6 +517,16 @@ public class MainFormView extends javax.swing.JFrame {
 //        main.setVisible(true);
 //        this.dispose();
     }//GEN-LAST:event_btnHomeActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        // TODO add your handling code here:
+        QuanLyDoanhSo quanLyDoanhSo = new QuanLyDoanhSo();
+        jPanelRun.removeAll();
+        jPanelRun.add(quanLyDoanhSo);
+        jPanelRun.setLayout(new FlowLayout());
+        this.pack();
+        jPanelRun.setVisible(true);
+    }//GEN-LAST:event_jButton6ActionPerformed
 
     /**
      * @param args the command line arguments
