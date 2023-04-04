@@ -4,10 +4,32 @@
  */
 package da1_qlbantrasua.Repositories;
 
+import da1_qlbantrasua.DomainModels.SanPham;
+import da1_qlbantrasua.ViewModels.SanPhamFromBanHang;
+import da1_qlbantrasua.ViewModels.SanPhamViewModel;
+import da1_qlbantrasua.ViewModels.ThongKeSanPham;
+import java.util.ArrayList;
+
 /**
  *
  * @author Admin
  */
 public interface SanPhamRepository {
-    
+    public ArrayList<SanPham> getListSanPhamDB();
+    public Boolean themSanPham(SanPham sanPham);
+    public Boolean updateSanPham(SanPham sanPham, String id);
+    public Boolean xoaSanPham(String id);
+    public ArrayList<SanPham> timKiemSPDBTheoTen(String tenSanPham);
+    public ArrayList<SanPham> timKiemSPDBTheoDanhMuc(String tenDanhMuc);
+    public ArrayList<SanPhamViewModel> timKiem(String tenSanPham);
+    public ArrayList<SanPhamViewModel> getListView();
+    public ArrayList<SanPhamFromBanHang> getListSPFormBH();
+    public ArrayList<SanPhamFromBanHang> timSPTheoTen(String tenSP);
+    public ArrayList<SanPhamFromBanHang> timSPTheoDanhMuc(String tenDanhMuc);
+    public ArrayList<ThongKeSanPham> TKSanPham();
+    public ArrayList<ThongKeSanPham> TKSanPhamTOPSLBNhieu();
+    public ArrayList<ThongKeSanPham> TKSanPhamTOPSLBIt();
+    public SanPham timSanPhamTheoMa(String maSP);
+    public ArrayList<SanPham> getListAllSanPhamDB();
+    public ArrayList<SanPham> timThongTinSanPhamQuanLy(String tenSanPham);
 }
