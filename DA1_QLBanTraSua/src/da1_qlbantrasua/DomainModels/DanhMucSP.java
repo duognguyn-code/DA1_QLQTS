@@ -67,5 +67,19 @@ public class DanhMucSP {
     public void setTrangThai(int trangThai) {
         this.trangThai = trangThai;
     }
-    
+    @Override
+    public String toString() {
+        return ten;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof DanhMucSP) {
+            DanhMucSP dMSP = (DanhMucSP) obj;
+            if (this.id.equals(dMSP.id)) {
+                return true;
+            }
+        }
+        return false;
+    }
 }

@@ -27,6 +27,13 @@ public class ThongKeSanPham {
         this.doanhThu = doanhThu;
         this.trangThai = trangThai;
     }
+    public ThongKeSanPham(String ma, String ten, double gia, int soLuongBan, int trangThai) {
+        this.ma = ma;
+        this.ten = ten;
+        this.gia = gia;
+        this.soLuongBan = soLuongBan;
+        this.trangThai = trangThai;
+    }
 
     public String getMa() {
         return ma;

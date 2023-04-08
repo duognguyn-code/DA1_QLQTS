@@ -5,6 +5,8 @@
 package da1_qlbantrasua.Services.impl;
 
 import da1_qlbantrasua.DomainModels.Size;
+import da1_qlbantrasua.Repositories.SizeRepository;
+import da1_qlbantrasua.Repositories.impl.SizeRepositoryImpl;
 import da1_qlbantrasua.Services.SizeService;
 import da1_qlbantrasua.ViewModels.SizeViewModel;
 import java.util.ArrayList;
@@ -14,45 +16,61 @@ import java.util.ArrayList;
  * @author Admin
  */
 public class SizeServiceImpl implements SizeService{
+    private SizeRepository sizeRepository = new SizeRepositoryImpl();
 
     @Override
     public ArrayList<Size> getListSizeDB() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return sizeRepository.getListSizeDB();
     }
 
     @Override
     public String themSize(Size size) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        boolean them = sizeRepository.themSize(size);
+        if (them) {
+            return "Thêm thành công";
+        } else {
+            return "Thêm thất bại";
+        }
     }
 
     @Override
     public String updateSize(Size size, String id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        boolean sua = sizeRepository.updateSize(size, id);
+        if (sua) {
+            return "Sửa thành công";
+        } else {
+            return "Sửa thất bại";
+        }
     }
 
     @Override
     public String xoaSize(String ma) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        boolean xoa = sizeRepository.xoaSize(ma);
+        if (xoa) {
+            return "Xóa thành công";
+        } else {
+            return "Xóa thất bại";
+        }
     }
 
     @Override
     public ArrayList<Size> timKiem(String tenSize) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return sizeRepository.timKiem(tenSize);
     }
 
     @Override
     public ArrayList<SizeViewModel> getListView() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return sizeRepository.getListView();
     }
 
     @Override
     public ArrayList<Size> getListAllSizeDB() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return sizeRepository.getListAllSizeDB();
     }
 
     @Override
     public ArrayList<Size> getListSizeKinhDoanh() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return sizeRepository.getListSizeKinhDoanh();
     }
-    
+
 }

@@ -17,6 +17,18 @@ public class Size {
 
     public Size() {
     }
+    public Size(String ma, String ten, double gia) {
+        this.ma = ma;
+        this.ten = ten;
+        this.gia = gia;
+    }
+
+    public Size(String id,String ma, String ten, double gia) {
+        this.id = id;
+        this.ma = ma;
+        this.ten = ten;
+        this.gia = gia;
+    }
 
     public Size(String id, String ma, String ten, double gia, int trangThai) {
         this.id = id;
@@ -65,5 +77,21 @@ public class Size {
     public void setTrangThai(int trangThai) {
         this.trangThai = trangThai;
     }
+    @Override
+    public String toString() {
+        return ten;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if(obj instanceof Size){
+            Size size = (Size) obj;
+            if(this.id.equals(size.id)){
+                return true;
+            }
+        }
+        return false;
+    }
+    
     
 }
