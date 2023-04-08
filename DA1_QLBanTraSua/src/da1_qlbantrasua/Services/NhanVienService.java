@@ -5,6 +5,8 @@
 package da1_qlbantrasua.Services;
 
 import da1_qlbantrasua.DomainModels.CTGioHang;
+import da1_qlbantrasua.DomainModels.NhanVien;
+import da1_qlbantrasua.ViewModels.NhanVienViewModel;
 import java.util.ArrayList;
 
 /**
@@ -12,11 +14,19 @@ import java.util.ArrayList;
  * @author Admin
  */
 public interface NhanVienService {
-    public ArrayList<CTGioHang> getListCTGioHang(String maHoaDon);
-    public ArrayList<CTGioHang> hoaDonAo();
-    public String themCTGH(CTGioHang cTGioHang);
-    public String suaCTGH(CTGioHang cTGioHang, String id);
-    public String xoaCTGH(String idCTGH);
-    public String xoaCTGHKhiThanhToan(String maHoaDon);
-    public String xoaToanBoGioHang(String maHoaDon);
+    public ArrayList<NhanVien> getListNSXDB();
+    public NhanVien getListNhanVienDB(String maNV);
+    public String themNhanVien(NhanVien nhanVien);
+    
+    public String suaNhanVien(NhanVien nhanVien, String maNVSua);
+    
+    public String xoaNhanVien(String maNVXoa);
+    
+    public ArrayList<NhanVien> timKiemNV(String tenNV);
+    
+    public ArrayList<NhanVien> findByMaNv(String maNV);
+    
+    
+    
+    public ArrayList<NhanVienViewModel> listNVViewModel();
 }

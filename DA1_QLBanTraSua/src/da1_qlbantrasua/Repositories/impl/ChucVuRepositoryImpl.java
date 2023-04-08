@@ -6,38 +6,97 @@ package da1_qlbantrasua.Repositories.impl;
 
 import da1_qlbantrasua.DomainModels.ChucVu;
 import da1_qlbantrasua.Repositories.ChucVuRepository;
+import da1_qlbantrasua.Utilties.DBConnection;
 import da1_qlbantrasua.ViewModels.ChucVuViewModel;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.ArrayList;
 
 /**
  *
  * @author Admin
  */
-public class ChucVuRepositoryImpl implements ChucVuRepository{
+public class ChucVuRepositoryImpl implements ChucVuRepository {
+
+    private DBConnection connection;
 
     @Override
     public ArrayList<ChucVu> getListChucVuDB() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        ArrayList<ChucVu> listChucVuDB = new ArrayList<>();
+        String sql = "select * from chuc_vu";
+        try ( Connection con = connection.getConnection();  PreparedStatement ps = con.prepareStatement(sql)) {
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                ChucVu cv = new ChucVu();
+                cv.setId(rs.getString(1));
+                cv.setMa(rs.getString(2));
+                cv.setTen(rs.getString(3));
+                listChucVuDB.add(cv);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return listChucVuDB;
     }
 
     @Override
     public Boolean themChucVu(ChucVu chucVu) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        String sql = "insert into chuc_vu(ma ,ten) values(?,?)";
+        try ( Connection con = connection.getConnection();  PreparedStatement ps = con.prepareStatement(sql)) {
+            ps.setString(1, chucVu.getMa());
+            ps.setString(2, chucVu.getTen());
+            ps.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
     }
 
     @Override
     public Boolean suaChucVu(ChucVu chucVu, String maCV) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        String sql = "update chuc_vu set ma =? , ten = ? where ma = ? ";
+        try ( Connection con = DBConnection.getConnection();  PreparedStatement ps = con.prepareStatement(sql)) {
+            ps.setString(1, chucVu.getMa());
+            ps.setString(2, chucVu.getTen());
+            ps.executeUpdate();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
     }
 
     @Override
     public Boolean xoaChucVU(String maCV) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        String sql = "DELETE chuc_vu WHERE id = ?";
+        try ( Connection con = connection.getConnection();  PreparedStatement ps = con.prepareStatement(sql)) {
+            ps.setString(1, maCV);
+            ps.executeUpdate();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
     }
 
     @Override
     public ArrayList<ChucVuViewModel> listCVViewModel() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        ArrayList<ChucVuViewModel> listNVViewModel = new ArrayList<>();
+        String sql = "select * from chuc_vu";
+        try ( Connection con = connection.getConnection();  PreparedStatement ps = con.prepareStatement(sql)) {
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                ChucVuViewModel cv = new ChucVuViewModel();
+                cv.setId(rs.getString(1));
+                cv.setMa(rs.getString(2));
+                cv.setTen(rs.getString(3));
+                listNVViewModel.add(cv);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return listNVViewModel;
     }
-    
+
 }

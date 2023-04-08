@@ -6,53 +6,176 @@ package da1_qlbantrasua.Repositories.impl;
 
 import da1_qlbantrasua.DomainModels.Size;
 import da1_qlbantrasua.Repositories.SizeRepository;
+import da1_qlbantrasua.Utilties.DBConnection;
 import da1_qlbantrasua.ViewModels.SizeViewModel;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.ArrayList;
 
 /**
  *
  * @author Admin
  */
-public class SizeRepositoryImpl implements SizeRepository{
+public class SizeRepositoryImpl implements SizeRepository {
+
+    private DBConnection connection;
 
     @Override
     public ArrayList<Size> getListSizeKinhDoanh() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        ArrayList<Size> listDSSize = new ArrayList<>();
+        String query = "SELECT * FROM view_xemThongTinSize WHERE trang_thai = 0";
+        try ( Connection con = connection.getConnection();  PreparedStatement ps = con.prepareStatement(query)) {
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Size size = new Size();
+                size.setId(rs.getString(1));
+                size.setMa(rs.getString(2));
+                size.setTen(rs.getString(3));
+                size.setGia(rs.getInt(4));
+                size.setTrangThai(rs.getInt(5));
+                listDSSize.add(size);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return listDSSize;
     }
 
     @Override
     public ArrayList<Size> getListSizeDB() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        ArrayList<Size> listDSSize = new ArrayList<>();
+        String query = "SELECT * FROM view_xemThongTinSize WHERE trang_thai = 1 or trang_thai = 0";
+        try ( Connection con = connection.getConnection();  PreparedStatement ps = con.prepareStatement(query)) {
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Size size = new Size();
+                size.setId(rs.getString(1));
+                size.setMa(rs.getString(2));
+                size.setTen(rs.getString(3));
+                size.setGia(rs.getInt(4));
+                size.setTrangThai(rs.getInt(5));
+                listDSSize.add(size);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return listDSSize;
     }
 
     @Override
     public ArrayList<Size> getListAllSizeDB() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        ArrayList<Size> listDSSize = new ArrayList<>();
+        String query = "SELECT * FROM view_xemThongTinSize";
+        try ( Connection con = connection.getConnection();  PreparedStatement ps = con.prepareStatement(query)) {
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Size size = new Size();
+                size.setId(rs.getString(1));
+                size.setMa(rs.getString(2));
+                size.setTen(rs.getString(3));
+                size.setGia(rs.getInt(4));
+                size.setTrangThai(rs.getInt(5));
+                listDSSize.add(size);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return listDSSize;
     }
 
     @Override
     public Boolean themSize(Size size) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        int checkThem = 0;
+        String query = "INSERT INTO size(ma,ten,gia,trang_thai)\n"
+                + "VALUES (?,?,?,?)";
+        try ( Connection con = DBConnection.getConnection();  PreparedStatement ps = con.prepareStatement(query)) {
+            ps.setString(1, size.getMa());
+            ps.setString(2, size.getTen());
+            ps.setDouble(3, size.getGia());
+            ps.setInt(4, size.getTrangThai());
+            checkThem = ps.executeUpdate();
+            return checkThem > 0;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
     }
 
     @Override
     public Boolean updateSize(Size size, String id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        int checkUpdate = 0;
+        String query = "UPDATE size\n"
+                + "SET ma = ?, ten = ?,gia = ?, trang_thai = ?\n"
+                + "WHERE id = " + id;
+        try ( Connection con = DBConnection.getConnection();  PreparedStatement ps = con.prepareStatement(query)) {
+            ps.setString(1, size.getMa());
+            ps.setString(2, size.getTen());
+            ps.setDouble(3, size.getGia());
+            ps.setInt(4, size.getTrangThai());
+            checkUpdate = ps.executeUpdate();
+            return checkUpdate > 0;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
     }
 
     @Override
-    public Boolean xoaSize(String ma) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public Boolean xoaSize(String id) {
+        int checkXoa = 0;
+        String query = "UPDATE size\n"
+                + "Set trang_thai = 2\n"
+                + "WHERE id = ?";
+        try ( Connection con = connection.getConnection();  PreparedStatement ps = con.prepareStatement(query)) {
+            ps.setString(1, id);
+            checkXoa = ps.executeUpdate();
+            return checkXoa > 0;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
     }
 
     @Override
     public ArrayList<Size> timKiem(String tenSize) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        ArrayList<Size> listTimKiemDuong = new ArrayList<>();
+        String query = "SELECT * FROM view_xemThongTinSize\n"
+                + "WHERE ten like N'%" + tenSize + "%'";
+        try ( Connection con = connection.getConnection();  PreparedStatement ps = con.prepareStatement(query)) {
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Size size = new Size();
+                size.setId(rs.getString(1));
+                size.setMa(rs.getString(2));
+                size.setTen(rs.getString(3));
+                size.setGia(rs.getInt(4));
+                size.setTrangThai(rs.getInt(5));
+                listTimKiemDuong.add(size);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return listTimKiemDuong;
     }
 
     @Override
     public ArrayList<SizeViewModel> getListView() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        ArrayList<SizeViewModel> listSize = new ArrayList<>();
+        String query = "SELECT ma,ten,gia FROM size";
+        try ( Connection con = DBConnection.getConnection();  PreparedStatement ps = con.prepareStatement(query)) {
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                SizeViewModel size = new SizeViewModel();
+                size.setMaSize(rs.getString(1));
+                size.setTenSize(rs.getString(2));
+                size.setGiaSize(rs.getDouble(3));
+                listSize.add(size);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return listSize;
     }
-    
+
 }
