@@ -4,11 +4,20 @@
  */
 package da1_qlbantrasua.Views;
 
+import da1_qlbantrasua.Repositories.impl.NhanVienRepositoryImpl;
+import da1_qlbantrasua.Services.LoginService;
+import da1_qlbantrasua.Services.NhanVienService;
+import da1_qlbantrasua.Services.impl.LoginServiceImpl;
+import da1_qlbantrasua.Services.impl.NhanVienServiceImpl;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Admin
  */
 public class Login extends javax.swing.JDialog {
+    private NhanVienService qLNV = new NhanVienServiceImpl();
+    private LoginService qLLogin = new LoginServiceImpl();
 
     /**
      * Creates new form Login
@@ -16,7 +25,11 @@ public class Login extends javax.swing.JDialog {
     public Login(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        setLocationRelativeTo(null);
+        this.setTitle("Login");
+        
     }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -61,7 +74,7 @@ public class Login extends javax.swing.JDialog {
         });
 
         btnDangXuat.setBackground(new java.awt.Color(204, 0, 0));
-        btnDangXuat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/da1_qlbantrasua/Views/icon/check-out.png"))); // NOI18N
+        btnDangXuat.setIcon(new javax.swing.ImageIcon("C:\\Users\\Admin\\Documents\\GitHub\\DA1_QLQTS\\DA1_QLBanTraSua\\src\\da1_qlbantrasua\\Views\\icon\\check-out.png")); // NOI18N
         btnDangXuat.setText("Đăng Xuất");
         btnDangXuat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -70,7 +83,7 @@ public class Login extends javax.swing.JDialog {
         });
 
         btnDangNhap.setBackground(new java.awt.Color(0, 255, 102));
-        btnDangNhap.setIcon(new javax.swing.ImageIcon(getClass().getResource("/da1_qlbantrasua/Views/icon/login.png"))); // NOI18N
+        btnDangNhap.setIcon(new javax.swing.ImageIcon("C:\\Users\\Admin\\Documents\\GitHub\\DA1_QLQTS\\DA1_QLBanTraSua\\src\\da1_qlbantrasua\\Views\\icon\\login.png")); // NOI18N
         btnDangNhap.setText("Đăng Nhập");
         btnDangNhap.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -104,7 +117,7 @@ public class Login extends javax.swing.JDialog {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(showHideCheck)
                                 .addGap(107, 107, 107)))
-                        .addContainerGap(64, Short.MAX_VALUE))
+                        .addContainerGap(48, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(txpMatKhau, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -162,6 +175,20 @@ public class Login extends javax.swing.JDialog {
 
     private void btnDangNhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDangNhapActionPerformed
         // TODO add your handling code here:
+        String maNV = txtTaiKhoan.getText();
+        String matKhau = txpMatKhau.getText();
+        int confirm = JOptionPane.showConfirmDialog(this, "Bạn có muốn đăng nhập không?");
+        if(confirm == JOptionPane.YES_OPTION){
+           if(new NhanVienRepositoryImpl().checkLogin(maNV, matKhau)){
+               MainFormView mainHome = new MainFormView();
+               this.dispose();
+               mainHome.setVisible(true);
+               mainHome.setDataNhanVien(qLNV.getListNhanVienDB(maNV));
+               JOptionPane.showMessageDialog(this, qLLogin.checkLogin(maNV, matKhau));
+           }else{
+               JOptionPane.showMessageDialog(this, "Sai tên tài khoản hoặc mật khẩu");
+           }
+        }
     }//GEN-LAST:event_btnDangNhapActionPerformed
 
     /**

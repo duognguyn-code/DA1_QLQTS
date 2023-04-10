@@ -17,6 +17,11 @@ public class HinhAnh {
 
     public HinhAnh() {
     }
+    public HinhAnh(SanPham sanPham, String ten, String duongDanAnh) {
+        this.sanPham = sanPham;
+        this.ten = ten;
+        this.duongDanAnh = duongDanAnh;
+    }
 
     public HinhAnh(String id, SanPham sanPham, String ten, String duongDanAnh, int trangThai) {
         this.id = id;

@@ -4,17 +4,26 @@
  */
 package da1_qlbantrasua.Services.impl;
 
+import da1_qlbantrasua.Repositories.NhanVienRepository;
+import da1_qlbantrasua.Repositories.impl.NhanVienRepositoryImpl;
 import da1_qlbantrasua.Services.LoginService;
 
 /**
  *
  * @author Admin
  */
-public class LoginServiceImpl implements LoginService{
+public class LoginServiceImpl implements LoginService {
+
+    private NhanVienRepository nhanvien = new NhanVienRepositoryImpl();
 
     @Override
     public String checkLogin(String maNV, String matKhau) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        Boolean checkLogin = nhanvien.checkLogin(maNV, matKhau);
+        if (checkLogin) {
+            return "Đăng nhập thành công!";
+        } else {
+            return "Đăng nhập thất bại!";
+        }
     }
-    
+
 }
