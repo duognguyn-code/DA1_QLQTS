@@ -44,6 +44,10 @@ public class CTGioHang {
         this.trangThai = trangThai;
     }
 
+    public CTGioHang(String text, String text0, String text1, int soLuong, double donGia, double parseDouble, String id, String ten, String id0, String ten0, String id1, String ten1) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
     public String getId() {
         return id;
     }

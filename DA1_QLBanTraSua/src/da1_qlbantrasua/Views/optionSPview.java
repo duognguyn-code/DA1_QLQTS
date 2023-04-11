@@ -4,18 +4,53 @@
  */
 package da1_qlbantrasua.Views;
 
+import da1_qlbantrasua.DomainModels.CTGioHang;
+import da1_qlbantrasua.DomainModels.HoaDon;
+import da1_qlbantrasua.DomainModels.MucDa;
+import da1_qlbantrasua.DomainModels.MucDuong;
+import da1_qlbantrasua.DomainModels.SanPham;
+import da1_qlbantrasua.DomainModels.Topping;
+import da1_qlbantrasua.Services.CTGHServiece;
+import da1_qlbantrasua.Services.MucDaService;
+import da1_qlbantrasua.Services.MucDuongService;
+import da1_qlbantrasua.Services.ToppingService;
+import da1_qlbantrasua.Services.impl.CTGHServiceImpl;
+import da1_qlbantrasua.Services.impl.MucDaServiceImpl;
+import da1_qlbantrasua.Services.impl.MucDuongServiceImpl;
+import da1_qlbantrasua.Services.impl.ToppingServiceImpl;
+import java.util.ArrayList;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Admin
  */
 public class optionSPview extends javax.swing.JDialog {
 
+    private MucDuongService qLDuong;
+    private MucDaService qLDa;
+    private ToppingService qLTopping;
+    private CTGHServiece qLCTGH;
+    private DefaultComboBoxModel dcmm;
+    double tienPhaiTra;
+    
     /**
      * Creates new form optionSPview
      */
     public optionSPview(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        qLDuong = new MucDuongServiceImpl();
+        qLDa = new MucDaServiceImpl();
+        qLTopping = new ToppingServiceImpl();
+        qLCTGH = new CTGHServiceImpl();
+        this.setLocationRelativeTo(null);
+        this.setResizable(false);
+        this.setTitle("Tùy Chọn Sản Phẩm");
+        loadCCBDuong(qLDuong.getListMucDuongDB());
+        loadCCBDa(qLDa.getListMucDaDB());
+        loadCCBTopping(qLTopping.getListToppingDB());
     }
 
     /**
@@ -29,27 +64,27 @@ public class optionSPview extends javax.swing.JDialog {
 
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        lblTenSP = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        lblGiaSP = new javax.swing.JLabel();
+        lblIDSP = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
+        lblMaHoaDon = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        cbbMucDuong = new javax.swing.JComboBox<>();
         jLabel8 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        cbbMucDa = new javax.swing.JComboBox<>();
         jLabel9 = new javax.swing.JLabel();
-        jComboBox3 = new javax.swing.JComboBox<>();
+        cbbTopping = new javax.swing.JComboBox<>();
         jLabel10 = new javax.swing.JLabel();
-        jSpinner1 = new javax.swing.JSpinner();
+        spiSoLuong = new javax.swing.JSpinner();
         jLabel11 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jLabel12 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        txtTongTien = new javax.swing.JTextField();
+        btnDongY = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        btnOkSoLuong = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -58,27 +93,27 @@ public class optionSPview extends javax.swing.JDialog {
         jPanel2.setBackground(new java.awt.Color(102, 204, 255));
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)), "Thông tin sản phẩm", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(255, 255, 255))); // NOI18N
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Tên Sản phẩm");
+        lblTenSP.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        lblTenSP.setForeground(new java.awt.Color(255, 255, 255));
+        lblTenSP.setText("Tên Sản phẩm");
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("ID Sản Phẩm");
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Giá");
+        lblGiaSP.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblGiaSP.setForeground(new java.awt.Color(255, 255, 255));
+        lblGiaSP.setText("Giá");
 
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("jLabel4");
+        lblIDSP.setForeground(new java.awt.Color(255, 255, 255));
+        lblIDSP.setText("jLabel4");
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("MÃ Đơn hàng");
 
-        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel6.setText("jLabel4");
+        lblMaHoaDon.setForeground(new java.awt.Color(255, 255, 255));
+        lblMaHoaDon.setText("jLabel4");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -87,18 +122,18 @@ public class optionSPview extends javax.swing.JDialog {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(27, 27, 27)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
+                    .addComponent(lblTenSP)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addGap(18, 18, 18)
-                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(lblIDSP, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(52, 52, 52)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblGiaSP, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(lblMaHoaDon, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(20, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -106,14 +141,14 @@ public class optionSPview extends javax.swing.JDialog {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel3))
+                    .addComponent(lblTenSP)
+                    .addComponent(lblGiaSP))
                 .addGap(27, 27, 27)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jLabel4)
+                    .addComponent(lblIDSP)
                     .addComponent(jLabel5)
-                    .addComponent(jLabel6))
+                    .addComponent(lblMaHoaDon))
                 .addContainerGap(43, Short.MAX_VALUE))
         );
 
@@ -123,17 +158,17 @@ public class optionSPview extends javax.swing.JDialog {
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Mức Đường");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Mức đá");
-
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("Topping");
 
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbbTopping.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbbToppingActionPerformed(evt);
+            }
+        });
 
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
         jLabel10.setText("Số lượng");
@@ -141,25 +176,19 @@ public class optionSPview extends javax.swing.JDialog {
         jLabel11.setForeground(new java.awt.Color(255, 255, 255));
         jLabel11.setText("Tổng tiền");
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        txtTongTien.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                txtTongTienActionPerformed(evt);
             }
         });
 
-        jLabel12.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/da1_qlbantrasua/Views/icon/check.png"))); // NOI18N
-
-        jLabel13.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/da1_qlbantrasua/Views/icon/check.png"))); // NOI18N
-
-        jButton1.setBackground(new java.awt.Color(51, 255, 51));
-        jButton1.setFont(new java.awt.Font("Segoe UI", 3, 12)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Đồng ý");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnDongY.setBackground(new java.awt.Color(51, 255, 51));
+        btnDongY.setFont(new java.awt.Font("Segoe UI", 3, 12)); // NOI18N
+        btnDongY.setForeground(new java.awt.Color(255, 255, 255));
+        btnDongY.setText("Đồng ý");
+        btnDongY.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnDongYActionPerformed(evt);
             }
         });
 
@@ -173,6 +202,22 @@ public class optionSPview extends javax.swing.JDialog {
             }
         });
 
+        btnOkSoLuong.setIcon(new javax.swing.ImageIcon("C:\\Users\\ASUS\\Downloads\\Documents\\FPT Poly\\PRO10-DuAn1\\File\\DA1_QLQTS\\DA1_QLBanTraSua\\src\\da1_qlbantrasua\\Views\\icon\\add-button.png")); // NOI18N
+        btnOkSoLuong.setToolTipText("");
+        btnOkSoLuong.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnOkSoLuongActionPerformed(evt);
+            }
+        });
+
+        jButton3.setIcon(new javax.swing.ImageIcon("C:\\Users\\ASUS\\Downloads\\Documents\\FPT Poly\\PRO10-DuAn1\\File\\DA1_QLQTS\\DA1_QLBanTraSua\\src\\da1_qlbantrasua\\Views\\icon\\add-button.png")); // NOI18N
+        jButton3.setToolTipText("");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -180,7 +225,7 @@ public class optionSPview extends javax.swing.JDialog {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(64, 64, 64)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton1)
+                    .addComponent(btnDongY)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel7)
@@ -190,15 +235,15 @@ public class optionSPview extends javax.swing.JDialog {
                             .addComponent(jLabel11))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jComboBox3, 0, 215, Short.MAX_VALUE)
-                            .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jComboBox2, 0, 215, Short.MAX_VALUE)
-                            .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField1))))
+                            .addComponent(cbbTopping, 0, 215, Short.MAX_VALUE)
+                            .addComponent(cbbMucDuong, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(cbbMucDa, 0, 215, Short.MAX_VALUE)
+                            .addComponent(spiSoLuong, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtTongTien))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel12)
-                    .addComponent(jLabel13))
+                    .addComponent(btnOkSoLuong, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel3Layout.createSequentialGroup()
@@ -212,29 +257,33 @@ public class optionSPview extends javax.swing.JDialog {
                 .addGap(25, 25, 25)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cbbMucDuong, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(30, 30, 30)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cbbMucDa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel8))
                 .addGap(23, 23, 23)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel9)
-                    .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel12))
-                .addGap(34, 34, 34)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel10)
-                        .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel13))
-                .addGap(24, 24, 24)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel11)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addGap(34, 34, 34))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel9)
+                            .addComponent(cbbTopping, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(36, 36, 36)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnOkSoLuong, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel10)
+                                .addComponent(spiSoLuong, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(24, 24, 24)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel11)
+                            .addComponent(txtTongTien, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
+                        .addComponent(btnDongY)
+                        .addGap(34, 34, 34))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
             .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                     .addContainerGap(321, Short.MAX_VALUE)
@@ -276,17 +325,54 @@ public class optionSPview extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void txtTongTienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTongTienActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_txtTongTienActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnDongYActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDongYActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+        MucDa mucDa = (MucDa) cbbMucDa.getSelectedItem();
+        MucDuong mucDuong = (MucDuong) cbbMucDuong.getSelectedItem();
+        Topping topping = (Topping) cbbTopping.getSelectedItem();
+        int soLuong = (int) spiSoLuong.getValue();
+        double donGia = Double.parseDouble(lblGiaSP.getText()) + topping.getGia();
+        CTGioHang cTGH = new CTGioHang(lblMaHoaDon.getText(), lblIDSP.getText(),lblTenSP.getText(),
+            soLuong, donGia,Double.parseDouble(txtTongTien.getText()), mucDuong.getId(), mucDuong.getTen(),
+            mucDa.getId(),mucDa.getTen(), topping.getId(), topping.getTen());
+        JOptionPane.showMessageDialog(this, qLCTGH.themCTGH(cTGH));
+        dispose();
+    }//GEN-LAST:event_btnDongYActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void btnOkSoLuongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOkSoLuongActionPerformed
+        // TODO add your handling code here:
+         tienPhaiTra = Double.parseDouble(txtTongTien.getText());
+        int soLuong = (int) spiSoLuong.getValue();
+        int confirm = JOptionPane.showConfirmDialog(this, "Bạn muốn mua " + soLuong + " sản phẩm đúng không?");
+        if (confirm == JOptionPane.YES_OPTION) {
+            double gia1SP = tienPhaiTra;
+            tienPhaiTra = gia1SP * soLuong;
+            txtTongTien.setText(String.valueOf(tienPhaiTra));
+        }
+    }//GEN-LAST:event_btnOkSoLuongActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        Topping topping = (Topping) cbbTopping.getSelectedItem();
+        int confirm = JOptionPane.showConfirmDialog(this, "Bạn có muốn chọn " + topping.getTen());
+        if (confirm == JOptionPane.YES_OPTION) {
+            double tongTien = Double.parseDouble(lblGiaSP.getText()) + topping.getGia();
+            txtTongTien.setText(String.valueOf(tongTien));
+        }
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void cbbToppingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbbToppingActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_cbbToppingActionPerformed
 
     /**
      * @param args the command line arguments
@@ -331,28 +417,60 @@ public class optionSPview extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnDongY;
+    private javax.swing.JButton btnOkSoLuong;
+    private javax.swing.JComboBox<String> cbbMucDa;
+    private javax.swing.JComboBox<String> cbbMucDuong;
+    private javax.swing.JComboBox<String> cbbTopping;
     private javax.swing.JButton jButton2;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
-    private javax.swing.JComboBox<String> jComboBox3;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JSpinner jSpinner1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JLabel lblGiaSP;
+    private javax.swing.JLabel lblIDSP;
+    private javax.swing.JLabel lblMaHoaDon;
+    private javax.swing.JLabel lblTenSP;
+    private javax.swing.JSpinner spiSoLuong;
+    private javax.swing.JTextField txtTongTien;
     // End of variables declaration//GEN-END:variables
+
+    void setEditDaTa(SanPham get) {
+        lblIDSP.setText(get.getId());
+        lblTenSP.setText(get.getTen() + "(" + get.getSize() + ")");
+        lblGiaSP.setText(String.valueOf(get.getGia()));
+        txtTongTien.setText(String.valueOf(get.getGia()));
+    }
+    private void loadCCBDuong(ArrayList<MucDuong> listMucDuongDB) {
+        dcmm = (DefaultComboBoxModel) cbbMucDuong.getModel();
+        for (MucDuong mucDuong : listMucDuongDB) {
+            dcmm.addElement(mucDuong);
+        }
+    }
+
+    private void loadCCBDa(ArrayList<MucDa> listMucDaDB) {
+        dcmm = (DefaultComboBoxModel) cbbMucDa.getModel();
+        for (MucDa mucDa : listMucDaDB) {
+            dcmm.addElement(mucDa);
+        }
+    }
+
+    private void loadCCBTopping(ArrayList<Topping> listToppingDB) {
+        dcmm = (DefaultComboBoxModel) cbbTopping.getModel();
+        for (Topping topping : listToppingDB) {
+            dcmm.addElement(topping);
+        }
+    }
+
+    void setEditThongTin(HoaDon get) {
+        lblMaHoaDon.setText(get.getMa());
+    }
+
 }

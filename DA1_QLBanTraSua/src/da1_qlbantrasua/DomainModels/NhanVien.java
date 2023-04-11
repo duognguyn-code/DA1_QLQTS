@@ -44,6 +44,17 @@ public class NhanVien {
         this.trangThai = trangThai;
     }
 
+    public NhanVien(String ma, String matKhau) {
+        this.ma = ma;
+        this.matKhau = matKhau;
+    }
+    public NhanVien(String id, String ma, String hoVaTen) {
+        this.id = id;
+        this.ma = ma;
+        this.hoVaTen = hoVaTen;
+    }
+    
+
     public String getId() {
         return id;
     }
