@@ -32,7 +32,7 @@ public interface HoaDonService {
     public ArrayList<DanhSachHoaDon> searchTheoKhoangTime(java.util.Date ngayTao, java.util.Date ngayThanhToan);
     public ArrayList<DanhSachHoaDon> getListDSHoaDonDB();
     public ArrayList<ChiTietHoaDon> getListCTTheoMa(String ma);
-    public int fillNgay(java.util.Date ngayTao);
+//    public int fillNgay(java.util.Date ngayTao);
     public double fillNgaydt(java.util.Date ngayTao);
     public int fillNgayhd(java.util.Date ngayTao);
     public int fillNgayhdh(java.util.Date ngayTao);

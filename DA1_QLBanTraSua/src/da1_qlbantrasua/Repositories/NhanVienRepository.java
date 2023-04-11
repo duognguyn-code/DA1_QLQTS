@@ -15,6 +15,8 @@ import java.util.ArrayList;
  */
 public interface NhanVienRepository {
     public ArrayList<NhanVien> getListNhanVienDB();
+    public NhanVien selectmatKhauNV(String ma);
+    
     public NhanVien getListNhanVienDB(String maNV);
     public Boolean themNhanVien(NhanVien nhanVien);
     public Boolean suaNhanVien(NhanVien nhanVien, String maNV);

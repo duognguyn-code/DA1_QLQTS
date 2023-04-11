@@ -21,6 +21,10 @@ import java.util.ArrayList;
  */
 public class NhanVienRepositoryImpl implements NhanVienRepository{
     private DBConnection connection;
+    public static void main(String[] args) {
+        NhanVien nhanVien = new NhanVienRepositoryImpl().getListNhanVienDB("NV2");
+            System.out.println(nhanVien.getMatKhau());
+    }
 
     @Override
     public ArrayList<NhanVien> getListNhanVienDB() {
@@ -55,7 +59,7 @@ public class NhanVienRepositoryImpl implements NhanVienRepository{
     @Override
     public NhanVien getListNhanVienDB(String maNV) {
        NhanVien nhanVien = new NhanVien();
-        String query = "SELECT * FROM view_thongTinNhanVien WHERE ma = ?";
+        String query = "SELECT * FROM view_thongTinNhanVien WHERE ma_nv = ?";
         try ( Connection con = connection.getConnection();  PreparedStatement ps = con.prepareStatement(query)) {
             ps.setString(1, maNV);
             ResultSet rs = ps.executeQuery();
@@ -213,7 +217,7 @@ ArrayList<NhanVien> listNVTim = new ArrayList<>();
 
     @Override
     public ArrayList<NhanVienViewModel> listNVViewModel() {
-ArrayList<NhanVienViewModel> listNVViewModel = new ArrayList<>();
+        ArrayList<NhanVienViewModel> listNVViewModel = new ArrayList<>();
         String sql = "select * from nhan_vien";
         try ( Connection con = connection.getConnection();  PreparedStatement ps = con.prepareStatement(sql)) {
             ResultSet rs = ps.executeQuery();
@@ -250,6 +254,41 @@ ArrayList<NhanVienViewModel> listNVViewModel = new ArrayList<>();
             }
         }
         return false;
+    }
+
+    @Override
+    public NhanVien selectmatKhauNV(String ma) {
+        NhanVien nv = new NhanVien();
+        String query = "SELECT * FROM nhan_vien\n"
+                + "WHERE ma like N'%" + ma + "%'";
+        try ( Connection con = connection.getConnection();  PreparedStatement ps = con.prepareStatement(query)) {
+            ps.setString(1, ma);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                ChucVu chucVu = new ChucVu(rs.getString(12), rs.getString(13));
+                nv.setId(rs.getString(1));
+                nv.setMa(rs.getString(2));
+                nv.setHoVaTen(rs.getString(3));
+                nv.setMatKhau(rs.getString(4));
+                nv.setsDT(rs.getString(5));
+                nv.setcCCD(rs.getString(6));
+                nv.setNgaySinh(rs.getDate(7));
+                nv.setGioiTinh(rs.getInt(8));
+                nv.setDiaChi(rs.getString(9));
+                nv.setEmail(rs.getString(10));
+                nv.setGhiChu(rs.getString(11));
+                nv.setChucVu(chucVu);
+                nv.setTrangThai(rs.getInt(14));
+//                TaiKhoanViewModel taiKhoan = new TaiKhoanViewModel();
+//                taiKhoan.setMaNV(rs.getString(2));
+//                taiKhoan.setMatKhau(rs.getString(4));
+//                taiKhoan.setChucVu(rs.getString(12));
+//                listTaiKhoan.add(taiKhoan);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return nv;
     }
     
 }

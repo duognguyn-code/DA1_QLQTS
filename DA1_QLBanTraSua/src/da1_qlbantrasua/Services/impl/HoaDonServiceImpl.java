@@ -5,6 +5,8 @@
 package da1_qlbantrasua.Services.impl;
 
 import da1_qlbantrasua.DomainModels.HoaDon;
+import da1_qlbantrasua.Repositories.HoaDonRepository;
+import da1_qlbantrasua.Repositories.impl.HoaDonRepositoryImpl;
 import da1_qlbantrasua.Services.HoaDonService;
 import da1_qlbantrasua.ViewModels.ChiTietHoaDon;
 import da1_qlbantrasua.ViewModels.DanhSachHoaDon;
@@ -18,19 +20,31 @@ import java.util.Date;
  */
 public class HoaDonServiceImpl implements HoaDonService{
 
+    private HoaDonRepository hoadonrepo = new HoaDonRepositoryImpl();
+    
     @Override
     public ArrayList<HoaDon> getListHoaDonDB() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+       return hoadonrepo.getListHDChoDB();
     }
 
     @Override
     public String themHoaDon(HoaDon hoaDon) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        boolean them = hoadonrepo.themHoaDon(hoaDon);
+        if (them) {
+            return "Tạo mới hóa đơn thành công!";
+        } else {
+            return "Tạo hóa đơn thất bại!";
+        }
     }
 
     @Override
-    public String updateHoaDon(HoaDon hoaDon, String id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public String updateHoaDon(HoaDon hoaDon, String maHoaDon) {
+       boolean update = hoadonrepo.updateHoaDon(hoaDon, maHoaDon);
+        if (update) {
+            return "Update hóa đơn thành công!";
+        } else {
+            return "Update hóa đơn thất bại!";
+        }
     }
 
     @Override
@@ -50,122 +64,127 @@ public class HoaDonServiceImpl implements HoaDonService{
 
     @Override
     public ArrayList<HDBHViewModel> getListHDBHView() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return hoadonrepo.getListHDBHView();
     }
 
     @Override
     public ArrayList<HDBHViewModel> getListHDChuaThanhToan() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return hoadonrepo.getListHDChuaThanhToan();
     }
 
     @Override
     public ArrayList<HDBHViewModel> getListHDDaThanhToan() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return hoadonrepo.getListHDDaThanhToan();
     }
 
     @Override
     public ArrayList<HDBHViewModel> getListHDHuyThanhToan() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+       return hoadonrepo.getListHDHuyThanhToan();
     }
 
     @Override
     public ArrayList<HoaDon> getListHDChoDB() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return hoadonrepo.getListHDChoDB();
     }
 
     @Override
     public String huyHoaDon(String lyDoHuy, String maHoaDon) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        boolean huy = hoadonrepo.huyHoaDon(lyDoHuy, maHoaDon);
+        if (huy) {
+            return "Hóa đơn đã bị hủy!";
+        } else {
+            return "Hủy không thành công!";
+        }
     }
 
     @Override
     public ArrayList<DanhSachHoaDon> getListDS() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+       return this.hoadonrepo.allDS();
     }
 
     @Override
     public ArrayList<ChiTietHoaDon> getListCT() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return this.hoadonrepo.allCT();
     }
 
     @Override
     public ArrayList<DanhSachHoaDon> searchTheoKhoangTime(Date ngayTao, Date ngayThanhToan) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+         return hoadonrepo.searchTheoKhoangTime(ngayTao, ngayThanhToan);
     }
 
     @Override
     public ArrayList<DanhSachHoaDon> getListDSHoaDonDB() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return hoadonrepo.getListDSHoaDonDB();
     }
 
     @Override
     public ArrayList<ChiTietHoaDon> getListCTTheoMa(String ma) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+       return hoadonrepo.allCT(ma);
     }
 
-    @Override
-    public int fillNgay(Date ngayTao) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
+//    @Override
+//    public int fillNgay(Date ngayTao) {
+//        return hoadonrepo.fillNgaydt(ngayTao);
+//    }
 
     @Override
     public double fillNgaydt(Date ngayTao) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return hoadonrepo.fillNgaydt(ngayTao);
     }
 
     @Override
     public int fillNgayhd(Date ngayTao) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return hoadonrepo.fillNgayhd(ngayTao);
     }
 
     @Override
     public int fillNgayhdh(Date ngayTao) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return hoadonrepo.fillNgayhdh(ngayTao);
     }
 
     @Override
     public double fillTuandt(Date ngayTao) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return hoadonrepo.fillTuandt(ngayTao);
     }
 
     @Override
     public int fillTuanhd(Date ngayTao) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return hoadonrepo.fillTuanhd(ngayTao);
     }
 
     @Override
     public int fillTuanhdh(Date ngayTao) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return hoadonrepo.fillTuanhdh(ngayTao);
     }
 
     @Override
     public double fillThangdt(Date ngayTao) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return hoadonrepo.fillThangdt(ngayTao);
     }
 
     @Override
     public int fillThanghd(Date ngayTao) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return hoadonrepo.fillThanghd(ngayTao);
     }
 
     @Override
     public int fillThanghdh(Date ngayTao) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return hoadonrepo.fillThanghdh(ngayTao);
     }
 
     @Override
     public double fillKhoangdt(Date ngayBD, Date ngayKT) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return hoadonrepo.fillKhoangdt(ngayBD, ngayKT);
     }
 
     @Override
     public int fillKhoanghd(Date ngayBD, Date ngayKT) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return hoadonrepo.fillKhoanghd(ngayBD, ngayKT);
     }
 
     @Override
     public int fillKhoanghdh(Date ngayBD, Date ngayKT) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return hoadonrepo.fillKhoanghdh(ngayBD, ngayKT);
     }
     
 }
