@@ -49,6 +49,7 @@ public class Login extends javax.swing.JDialog {
         btnDangXuat = new javax.swing.JButton();
         btnDangNhap = new javax.swing.JButton();
         txpMatKhau = new javax.swing.JPasswordField();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -74,7 +75,6 @@ public class Login extends javax.swing.JDialog {
         });
 
         btnDangXuat.setBackground(new java.awt.Color(204, 0, 0));
-        btnDangXuat.setIcon(new javax.swing.ImageIcon("C:\\Users\\Admin\\Documents\\GitHub\\DA1_QLQTS\\DA1_QLBanTraSua\\src\\da1_qlbantrasua\\Views\\icon\\check-out.png")); // NOI18N
         btnDangXuat.setText("Đăng Xuất");
         btnDangXuat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -83,11 +83,17 @@ public class Login extends javax.swing.JDialog {
         });
 
         btnDangNhap.setBackground(new java.awt.Color(0, 255, 102));
-        btnDangNhap.setIcon(new javax.swing.ImageIcon("C:\\Users\\Admin\\Documents\\GitHub\\DA1_QLQTS\\DA1_QLBanTraSua\\src\\da1_qlbantrasua\\Views\\icon\\login.png")); // NOI18N
         btnDangNhap.setText("Đăng Nhập");
         btnDangNhap.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDangNhapActionPerformed(evt);
+            }
+        });
+
+        jButton1.setText("Quên mật khẩu");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
             }
         });
 
@@ -112,12 +118,16 @@ public class Login extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(btnDangNhap)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(showHideCheck)
-                                .addGap(107, 107, 107)))
-                        .addContainerGap(48, Short.MAX_VALUE))
+                                .addGap(107, 107, 107))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(jButton1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnDangNhap)))
+                        .addContainerGap(43, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(txpMatKhau, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -142,7 +152,8 @@ public class Login extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnDangXuat)
-                    .addComponent(btnDangNhap))
+                    .addComponent(btnDangNhap)
+                    .addComponent(jButton1))
                 .addContainerGap())
         );
 
@@ -191,6 +202,12 @@ public class Login extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_btnDangNhapActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        QuenMatKhau quen = new QuenMatKhau(new MainFormView(), true);
+        quen.setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -236,6 +253,7 @@ public class Login extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDangNhap;
     private javax.swing.JButton btnDangXuat;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

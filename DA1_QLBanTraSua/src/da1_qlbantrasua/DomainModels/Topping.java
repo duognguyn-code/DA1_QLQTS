@@ -18,6 +18,12 @@ public class Topping {
     public Topping() {
     }
 
+    public Topping(String id, String ten) {
+        this.id = id;
+        this.ten = ten;
+    }
+    
+
     public Topping(String id, String ma, String ten, double gia, int trangThai) {
         this.id = id;
         this.ma = ma;
@@ -64,6 +70,10 @@ public class Topping {
 
     public void setTrangThai(int trangThai) {
         this.trangThai = trangThai;
+    }
+    @Override
+    public String toString() {
+        return ten;
     }
     
 }
