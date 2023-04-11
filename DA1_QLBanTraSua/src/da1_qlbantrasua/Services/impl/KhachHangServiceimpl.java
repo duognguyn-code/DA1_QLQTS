@@ -5,6 +5,8 @@
 package da1_qlbantrasua.Services.impl;
 
 import da1_qlbantrasua.DomainModels.KhachHang;
+import da1_qlbantrasua.Repositories.KhachHangRespository;
+import da1_qlbantrasua.Repositories.impl.KhachHangRespositoryimpl;
 import da1_qlbantrasua.Services.KhachHangService;
 import java.util.ArrayList;
 
@@ -13,40 +15,66 @@ import java.util.ArrayList;
  * @author Admin
  */
 public class KhachHangServiceimpl implements KhachHangService{
-
+    
+    private KhachHangRespository prodKH = new KhachHangRespositoryimpl();
     @Override
     public ArrayList<KhachHang> getListKhachHangDB() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return this.prodKH.getListKhachHangDB();
     }
 
     @Override
     public String themKhachHang(KhachHang k) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        boolean them = prodKH.themKhachHang(k);
+        if(them){
+            return "Thêm thành công";
+        }else{
+            return "Thêm thất bại";
+        }
     }
 
     @Override
     public String updateKhachHang(KhachHang k, String id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        boolean update = prodKH.updateKhachHang(k, id);
+        if(update){
+            return "Sửa thành công";
+        }else{
+            return "Sửa thất bại";
+        }
     }
 
     @Override
     public String xoaKhachHang(String ma) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        boolean xoa = prodKH.xoaKhachHang(ma);
+        if(xoa){
+            return "Xóa thành công";
+        }else{
+            return "Xóa thất bại";
+        }
     }
 
     @Override
     public ArrayList<KhachHang> getList() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return this.prodKH.all();
     }
 
     @Override
-    public KhachHang timKhachHangBySDT(String sDT) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public KhachHang timKhachHangBySDT(String sdt) {
+        return prodKH.timKhachHangBySDT(sdt);
     }
 
     @Override
     public String updateDiemKhachHang(int diem, String sdt) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        boolean update = prodKH.updateDiemKhachHang(diem, sdt);
+        if(update){
+            return "Quy đổi điểm thành công";
+        }else{
+            return "Quy đổi điểm thất bại";
+        }
+    }
+
+    @Override
+    public ArrayList<KhachHang> all() {
+        return prodKH.all();
     }
     
 }
