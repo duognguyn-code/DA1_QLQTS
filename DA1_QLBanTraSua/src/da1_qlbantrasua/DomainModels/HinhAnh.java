@@ -4,6 +4,7 @@
  */
 package da1_qlbantrasua.DomainModels;
 
+
 /**
  *
  * @author Admin
