@@ -17,6 +17,8 @@ public interface KhachHangService {
     public String updateKhachHang(KhachHang k, String id);
     public String xoaKhachHang(String ma);
     public ArrayList<KhachHang> getList();
-    public KhachHang timKhachHangBySDT(String sDT);
+    public KhachHang timKhachHangBySDT(String sdt);
     public String updateDiemKhachHang(int diem, String sdt);
+    public ArrayList<KhachHang> all();
+    
 }

@@ -71,5 +71,9 @@ public class MucDuong {
     public void setTrangThai(int trangThai) {
         this.trangThai = trangThai;
     }
+     @Override
+    public String toString() {
+        return ten;
+    }
     
 }
