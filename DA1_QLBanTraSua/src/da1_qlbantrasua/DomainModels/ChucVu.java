@@ -65,5 +65,8 @@ public class ChucVu {
         }
         return false;
     }
+    public static void main(String[] args) {
+        System.out.println("ko lỗi");
+    }
     
 }

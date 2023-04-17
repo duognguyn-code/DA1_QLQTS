@@ -59,7 +59,7 @@ public class NhanVienRepositoryImpl implements NhanVienRepository{
     @Override
     public NhanVien getListNhanVienDB(String maNV) {
        NhanVien nhanVien = new NhanVien();
-        String query = "SELECT * FROM view_thongTinNhanVien WHERE ma_nv = ?";
+        String query = "SELECT * FROM view_thongTinNhanVien WHERE ma = ?";
         try ( Connection con = connection.getConnection();  PreparedStatement ps = con.prepareStatement(query)) {
             ps.setString(1, maNV);
             ResultSet rs = ps.executeQuery();
