@@ -108,7 +108,7 @@ public class MainFormView extends javax.swing.JFrame {
         );
 
         jButton1.setBackground(new java.awt.Color(102, 204, 255));
-        jButton1.setIcon(new javax.swing.ImageIcon("C:\\Users\\ASUS\\Downloads\\Documents\\FPT Poly\\PRO10-DuAn1\\File\\DA1_QLQTS\\DA1_QLBanTraSua\\src\\da1_qlbantrasua\\Views\\icon\\logoMilkTea.png")); // NOI18N
+        jButton1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Admin\\Documents\\GitHub\\DA1_QLQTS\\DA1_QLBanTraSua\\src\\da1_qlbantrasua\\Views\\icon\\logoMilkTea.png")); // NOI18N
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -203,7 +203,7 @@ public class MainFormView extends javax.swing.JFrame {
         jPanel6.setBackground(new java.awt.Color(102, 204, 255));
 
         jButton2.setBackground(new java.awt.Color(102, 204, 255));
-        jButton2.setIcon(new javax.swing.ImageIcon("C:\\Users\\ASUS\\Downloads\\Documents\\FPT Poly\\PRO10-DuAn1\\File\\DA1_QLQTS\\DA1_QLBanTraSua\\src\\da1_qlbantrasua\\Views\\icon\\sell2.png")); // NOI18N
+        jButton2.setIcon(new javax.swing.ImageIcon("C:\\Users\\Admin\\Documents\\GitHub\\DA1_QLQTS\\DA1_QLBanTraSua\\src\\da1_qlbantrasua\\Views\\icon\\sell2.png")); // NOI18N
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -212,22 +212,27 @@ public class MainFormView extends javax.swing.JFrame {
 
         btnQuanLy.setBackground(new java.awt.Color(102, 204, 255));
         btnQuanLy.setForeground(new java.awt.Color(102, 204, 255));
-        btnQuanLy.setIcon(new javax.swing.ImageIcon("C:\\Users\\ASUS\\Downloads\\Documents\\FPT Poly\\PRO10-DuAn1\\File\\DA1_QLQTS\\DA1_QLBanTraSua\\src\\da1_qlbantrasua\\Views\\icon\\management.png")); // NOI18N
+        btnQuanLy.setIcon(new javax.swing.ImageIcon("C:\\Users\\Admin\\Documents\\GitHub\\DA1_QLQTS\\DA1_QLBanTraSua\\src\\da1_qlbantrasua\\Views\\icon\\management.png")); // NOI18N
         btnQuanLy.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnQuanLyActionPerformed(evt);
             }
         });
 
-        jButton4.setIcon(new javax.swing.ImageIcon("C:\\Users\\ASUS\\Downloads\\Documents\\FPT Poly\\PRO10-DuAn1\\File\\DA1_QLQTS\\DA1_QLBanTraSua\\src\\da1_qlbantrasua\\Views\\icon\\milktea2.png")); // NOI18N
+        jButton4.setIcon(new javax.swing.ImageIcon("C:\\Users\\Admin\\Documents\\GitHub\\DA1_QLQTS\\DA1_QLBanTraSua\\src\\da1_qlbantrasua\\Views\\icon\\milktea2.png")); // NOI18N
 
         jButton5.setBackground(new java.awt.Color(102, 204, 255));
-        jButton5.setIcon(new javax.swing.ImageIcon("C:\\Users\\ASUS\\Downloads\\Documents\\FPT Poly\\PRO10-DuAn1\\File\\DA1_QLQTS\\DA1_QLBanTraSua\\src\\da1_qlbantrasua\\Views\\icon\\thongke2.png")); // NOI18N
+        jButton5.setIcon(new javax.swing.ImageIcon("C:\\Users\\Admin\\Documents\\GitHub\\DA1_QLQTS\\DA1_QLBanTraSua\\src\\da1_qlbantrasua\\Views\\icon\\thongke2.png")); // NOI18N
 
-        jButton6.setIcon(new javax.swing.ImageIcon("C:\\Users\\ASUS\\Downloads\\Documents\\FPT Poly\\PRO10-DuAn1\\File\\DA1_QLQTS\\DA1_QLBanTraSua\\src\\da1_qlbantrasua\\Views\\icon\\sale2.png")); // NOI18N
+        jButton6.setIcon(new javax.swing.ImageIcon("C:\\Users\\Admin\\Documents\\GitHub\\DA1_QLQTS\\DA1_QLBanTraSua\\src\\da1_qlbantrasua\\Views\\icon\\sale2.png")); // NOI18N
 
         jButton7.setBackground(new java.awt.Color(102, 204, 255));
-        jButton7.setIcon(new javax.swing.ImageIcon("C:\\Users\\ASUS\\Downloads\\Documents\\FPT Poly\\PRO10-DuAn1\\File\\DA1_QLQTS\\DA1_QLBanTraSua\\src\\da1_qlbantrasua\\Views\\icon\\staff3.png")); // NOI18N
+        jButton7.setIcon(new javax.swing.ImageIcon("C:\\Users\\Admin\\Documents\\GitHub\\DA1_QLQTS\\DA1_QLBanTraSua\\src\\da1_qlbantrasua\\Views\\icon\\staff3.png")); // NOI18N
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -266,8 +271,7 @@ public class MainFormView extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addContainerGap(27, Short.MAX_VALUE))
+                            .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
         );
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
@@ -280,17 +284,17 @@ public class MainFormView extends javax.swing.JFrame {
                         .addGap(456, 456, 456)
                         .addComponent(jLabel1))
                     .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGap(141, 141, 141)
+                        .addGap(130, 130, 130)
                         .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(236, Short.MAX_VALUE))
+                .addContainerGap(249, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addComponent(jLabel1)
-                .addGap(31, 31, 31)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(48, 48, 48))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -403,6 +407,15 @@ public class MainFormView extends javax.swing.JFrame {
         this.pack();
         jPanel5.setVisible(true);
     }//GEN-LAST:event_btnQuanLyActionPerformed
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        // TODO add your handling code here:
+        NhanVienView nv = new NhanVienView();
+        jPanel5.removeAll();
+        jButton5.add(nv);
+        jButton5.setLayout(new FlowLayout());
+        this.pack();
+    }//GEN-LAST:event_jButton7ActionPerformed
 
     /**
      * @param args the command line arguments
