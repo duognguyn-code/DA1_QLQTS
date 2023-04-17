@@ -90,14 +90,11 @@ public class ChiTietHoaDon {
         this.topping = topping;
     }
 
-    public double getThanhTien() {
-        return thanhTien;
+    public double getThanhTien(int soLuong, double gia) {
+        return soLuong * gia;
     }
 
-    public void setThanhTien(double thanhTien) {
-        this.thanhTien = thanhTien;
-    }
-
+    
     public String getTrangThai() {
         return trangThai;
     }
